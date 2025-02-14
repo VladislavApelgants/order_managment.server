@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "commonjs",
+    "removeComments": true,
+    "lib": ["ES6"],
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "baseUrl": "./",
+    "incremental": true,
+    "esModuleInterop": true,
+    "typeRoots": ["./node_modules/@types"],
+    "strictNullChecks": true,
+    "resolveJsonModule": true
+  },
+  "ts-node": {
+    "files": true
+  },
+  "include": ["src/**/*.ts"],
+//   "files": ["index.d.ts"]
+}
