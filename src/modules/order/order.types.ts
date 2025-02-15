@@ -12,3 +12,7 @@ export interface CreateOrderRes {
     quantity: number;
     totalPrice: number;
 }
+
+export interface RetrieveUsersOrdersParams {
+    userId: string;
+}

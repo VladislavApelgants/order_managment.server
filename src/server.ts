@@ -21,7 +21,6 @@ export const startServer = (): void => {
   app.use("/orders", orderRouter);
 
   app.use(notFoundHandler);
-
   app.use(errorHandler);
 
   const PORT = Number(env(ENV_VARS.PORT));

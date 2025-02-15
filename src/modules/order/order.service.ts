@@ -49,3 +49,7 @@ export const createOrderService = async ({userId, productId, quantity}: CreateOr
 
     return order;
 };
+
+export const retrieveUsersOrdersService = async (userId: string) => {
+    return OrderModel.find({ userId });
+};
