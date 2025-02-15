@@ -19,5 +19,4 @@
     "files": true
   },
   "include": ["src/**/*.ts"],
-//   "files": ["index.d.ts"]
 }
