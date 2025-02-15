@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response } from 'express';
+import { type NextFunction, type Request, type Response } from 'express';
 import { HttpError } from 'http-errors';
 
 export const errorHandler = (
@@ -7,7 +7,6 @@ export const errorHandler = (
   res: Response,
   _next: NextFunction,
 ): void => {
-
   if (err instanceof HttpError) {
     res.status(err.status).json({
       status: err.status,

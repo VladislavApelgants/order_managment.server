@@ -1,6 +1,6 @@
 import createHttpError from 'http-errors';
-import { NextFunction, Request, Response } from 'express';
-import { ObjectSchema } from 'joi';
+import { type NextFunction, type Request, type Response } from 'express';
+import { type ObjectSchema } from 'joi';
 
 interface ErrorDetails {
   message: string;
@@ -14,14 +14,20 @@ interface ErrorDetails {
 }
 
 export const validateBody = (schema: ObjectSchema) => {
-  return async (req: Request, _res: Response, next: NextFunction): Promise<void> => {
+  return async (
+    req: Request,
+    _res: Response,
+    next: NextFunction,
+  ): Promise<void> => {
     try {
       await schema.validateAsync(req.body, {
         abortEarly: false,
       });
       next();
     } catch (error) {
-      const errorMessages = (error.details as ErrorDetails[]).map(err => err.message);
+      const errorMessages = (error.details as ErrorDetails[]).map(
+        (err) => err.message,
+      );
       const er = createHttpError(400, 'Bad request', {
         errors: errorMessages,
       });
