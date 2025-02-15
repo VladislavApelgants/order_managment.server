@@ -1,6 +1,6 @@
 import mongoose, { Schema, model, Types, Document } from "mongoose";
 
-interface IOrder extends Document {
+export interface IOrder extends Document {
   userId: Types.ObjectId;
   productId: Types.ObjectId;
   quantity: number;
@@ -37,5 +37,14 @@ const orderSchema = new Schema<IOrder>(
     versionKey:false,
   }
 );
+
+orderSchema.set('toJSON', {
+  transform: (_doc, ret) => {
+    if (ret.totalPrice && ret.totalPrice instanceof mongoose.Types.Decimal128) {
+      ret.totalPrice = parseFloat(ret.totalPrice.toString());
+    }
+    return ret;
+  },
+});
 
 export const OrderModel = model<IOrder>("Order", orderSchema);
