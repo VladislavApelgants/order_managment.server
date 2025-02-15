@@ -5,6 +5,8 @@ import pino from 'pino-http';
 import { errorHandler, notFoundHandler } from './middlewares';
 import { env, ENV_VARS } from './utils/env';
 import orderRouter from './modules/order/order.router';
+import userRouter from './modules/user/user.router';
+import productRouter from './modules/product/product.router';
 
 export const startServer = (): void => {
   const app = express();
@@ -19,6 +21,8 @@ export const startServer = (): void => {
   );
 
   app.use('/orders', orderRouter);
+  app.use('/users', userRouter);
+  app.use('/products', productRouter);
 
   app.use(notFoundHandler);
   app.use(errorHandler);

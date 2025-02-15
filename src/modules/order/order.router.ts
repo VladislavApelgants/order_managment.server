@@ -1,10 +1,10 @@
 import { Router } from 'express';
+import { limiter, validateBody, validateId } from '../../middlewares';
+import { ctrlWrapper } from '../../utils/ctrlWrapper';
 import {
   createOrderController,
   retrieveUsersOrdersController,
 } from './order.controller';
-import { limiter, validateBody, validateId } from '../../middlewares';
-import { ctrlWrapper } from '../../utils/ctrlWrapper';
 import { createOrderSchema } from './order.validation';
 
 const router = Router();

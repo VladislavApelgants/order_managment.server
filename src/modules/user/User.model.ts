@@ -1,6 +1,7 @@
-import mongoose, { Schema, model, type Document } from 'mongoose';
+import mongoose, { type Document, model, Schema } from 'mongoose';
 
-interface IUser extends Document {
+export interface IUser extends Document {
+  _id: string;
   name: string;
   email: string;
   balance: mongoose.Types.Decimal128;
@@ -26,5 +27,13 @@ const userSchema = new Schema<IUser>(
     versionKey: false,
   },
 );
+userSchema.set('toJSON', {
+  transform: (_doc, ret) => {
+    if (ret.balance && ret.balance instanceof mongoose.Types.Decimal128) {
+      ret.balance = parseFloat(ret.balance.toString());
+    }
+    return ret;
+  },
+});
 
 export const UserModel = model<IUser>('User', userSchema);
