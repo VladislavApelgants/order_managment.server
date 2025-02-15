@@ -1,5 +1,5 @@
-import rateLimit from 'express-rate-limit';
 import { type Request } from 'express';
+import rateLimit from 'express-rate-limit';
 
 export const limiter = rateLimit({
   windowMs: 60 * 1000,
@@ -9,9 +9,11 @@ export const limiter = rateLimit({
   },
   handler: (_req, res) => {
     res.status(429).json({
-      message:
-        'You have exceeded the limit of 10 requests per minute. Please try again later.',
-      error: 'Too many requests',
+      message: 'Too many requests',
+      data: {
+        message:
+          'You have exceeded the limit of 10 requests per minute. Please try again later.',
+      },
     });
   },
 });
