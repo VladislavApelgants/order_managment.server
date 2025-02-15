@@ -1,4 +1,4 @@
-import mongoose, { Schema, model, Document } from 'mongoose';
+import mongoose, { Schema, model, type Document } from 'mongoose';
 
 interface IUser extends Document {
   name: string;
@@ -19,8 +19,8 @@ const userSchema = new Schema<IUser>(
     },
     balance: {
       type: Schema.Types.Decimal128,
-      default: mongoose.Types.Decimal128.fromString('100.00')
-    }
+      default: mongoose.Types.Decimal128.fromString('100.00'),
+    },
   },
   {
     versionKey: false,

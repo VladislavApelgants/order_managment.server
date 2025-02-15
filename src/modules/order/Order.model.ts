@@ -1,6 +1,7 @@
-import mongoose, { Schema, model, Types, Document } from "mongoose";
+import mongoose, { type Document, model, Schema, type Types } from 'mongoose';
 
 export interface IOrder extends Document {
+  _id: string;
   userId: Types.ObjectId;
   productId: Types.ObjectId;
   quantity: number;
@@ -12,12 +13,12 @@ const orderSchema = new Schema<IOrder>(
   {
     userId: {
       type: Schema.Types.ObjectId,
-      ref: "User",
+      ref: 'User',
       required: true,
     },
     productId: {
       type: Schema.Types.ObjectId,
-      ref: "Product",
+      ref: 'Product',
       required: true,
     },
     quantity: {
@@ -34,8 +35,8 @@ const orderSchema = new Schema<IOrder>(
     },
   },
   {
-    versionKey:false,
-  }
+    versionKey: false,
+  },
 );
 
 orderSchema.set('toJSON', {
@@ -47,4 +48,4 @@ orderSchema.set('toJSON', {
   },
 });
 
-export const OrderModel = model<IOrder>("Order", orderSchema);
+export const OrderModel = model<IOrder>('Order', orderSchema);

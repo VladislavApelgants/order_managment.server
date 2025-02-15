@@ -4,7 +4,7 @@ import { randomUUID } from 'crypto';
 import pino from 'pino-http';
 import { errorHandler, notFoundHandler } from './middlewares';
 import { env, ENV_VARS } from './utils/env';
-import orderRouter from "./modules/order/order.router";
+import orderRouter from './modules/order/order.router';
 
 export const startServer = (): void => {
   const app = express();
@@ -18,7 +18,7 @@ export const startServer = (): void => {
     }),
   );
 
-  app.use("/orders", orderRouter);
+  app.use('/orders', orderRouter);
 
   app.use(notFoundHandler);
   app.use(errorHandler);

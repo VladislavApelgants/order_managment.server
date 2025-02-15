@@ -1,4 +1,4 @@
 export interface JsonResponse<DATA = any> {
-    data: DATA;
-    message: string;
+  data: DATA;
+  message: string;
 }
